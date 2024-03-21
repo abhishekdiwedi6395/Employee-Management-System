@@ -1,38 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/login.css';
-function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+import { FaUser,FaLock } from "react-icons/fa";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Validate the form inputs
-    if (!email || !password) {
-      setError('Please enter both email and password');
-      return;
-    }
-    // Perform login logic here (e.g., send API request)
-    console.log('Logging in...');
-  };
-
+const Login = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <form className='form' onSubmit={handleSubmit} style={{ width: '300px', padding: '20px', border: '1px solid #ccc', borderRadius: '5px' }}>
-        <h2>Login</h2>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <div style={{ marginBottom: '10px' }}>
-          <label>Email:</label>
-          <input type="email" placeholder="Please Enter Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    <div className='wrapper' style={{paddingTop:"50px"}}> 
+      <form action=''>
+        <h1>Login</h1>
+        <div className='input-box'>
+          <input type='text' placeholder='Username' required/>
+          <FaUser className='icon'/>
         </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Password:</label>
-          <input className='' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className='input-box'>
+          <input type='password' placeholder='Password' required/>
+          <FaLock className='icon'/>
         </div>
-        <button type="submit">Login</button>
+        <div className='remember-forgot'>
+          <label><input type='checkbox'/>Remember me</label>
+          <a href='#'>Forgot Password? </a>
+        </div>
+        <button type='Submit'>Login</button>
+        <div className='register-link'>
+          <p>Don't have any account?  <a href='#'>Register</a> </p>
+        </div>
       </form>
     </div>
-  );
+  )
 }
 
-export default LoginPage;
+export default Login
